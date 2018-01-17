@@ -30,10 +30,6 @@ namespace RestauranteFront
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
-            app.UseMiddleware<MyRequestLocalizationMiddleware>(); 
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
