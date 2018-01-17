@@ -1,0 +1,11 @@
+<panel [title]="title">
+    <panel [title]="'Filtros'">
+        <div class="form-group">
+            <label for="inputFilterRestaurante">Nome</label>
+            <input type="text" class="form-control" id="inputFilterRestaurante" aria-describedby="Nome do restaurante" placeholder="">
+        </div>
+        <button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        <button type="button" class="btn btn-success" [routerLink]="['/Cadastrar/Restaurante']"> <span class="glyphicon glyphicon-plus"></span> Cadastrar novo restaurante</button>
+    </panel>
+    <grid-root></grid-root>
+</panel>

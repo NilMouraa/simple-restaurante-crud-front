@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="~/css/ag-grid.css" rel="stylesheet"/>
+<link href="~/css/ag-theme-material.css" rel="stylesheet" />
+
+<style>
+    body {
+        font-family: roboto;
+    }
+</style>
+
+<app asp-prerender-module="ClientApp/dist/main-server">Loading...</app>
+
+<script src="~/dist/vendor.js" asp-append-version="true"></script>
+@section scripts {
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+}
