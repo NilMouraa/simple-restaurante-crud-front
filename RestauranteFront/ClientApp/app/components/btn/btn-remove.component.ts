@@ -4,11 +4,7 @@ import { ICellRendererAngularComp } from "ag-grid-angular";
 @Component({
     selector: 'child-cell',
     templateUrl: './btn-remove.component.html',
-    styles: [
-        '.btn {\
-            line-height: 0.5\
-        }'
-    ]
+    styleUrls: ['./btn-remove.component.css']
 })
 export class BtnRemoveComponent implements ICellRendererAngularComp {
     public params: any;
@@ -18,7 +14,7 @@ export class BtnRemoveComponent implements ICellRendererAngularComp {
     }
 
     public invokeParentMethod() {
-        this.params.context.componentParent.nil(`Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`)
+        this.params.context.componentParent.Remover(this.params.node.data);
     }
 
     refresh(): boolean {

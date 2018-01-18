@@ -1,24 +1,31 @@
 ﻿import { Component } from "@angular/core";
 import { ICellRendererAngularComp } from "ag-grid-angular";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'child-cell',
     templateUrl: './btn-edit.component.html',
-    styles: [
-        '.btn {\
-            line-height: 0.5\
-        }'
-    ]
+    styleUrls: ['./btn-edit.component.css']
 })
 export class BtnEditComponent implements ICellRendererAngularComp {
     public params: any;
+
+    constructor(private router: Router) {}
 
     agInit(params: any): void {
         this.params = params;
     }
 
     public invokeParentMethod() {
-        this.params.context.componentParent.nil(`Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`)
+        let url: string = this.router.url;
+        
+        if (url.indexOf("Restaurante") !== -1) {
+            this.router.navigate(['/Editar/Restaurante', this.params.node.data.id]);
+        }
+        else {
+            this.router.navigate(['/Editar/Prato', this.params.node.data.id]);
+        }
+
     }
 
     refresh(): boolean {

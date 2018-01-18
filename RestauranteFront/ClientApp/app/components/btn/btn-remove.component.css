@@ -1,0 +1,12 @@
+﻿.btn {
+    line-height: 0.5
+}
+
+.glyphicon.glyphicon-minus {
+    color: #d9534f;
+}
+
+.glyphicon.glyphicon-minus:hover {
+    color: #c9302c;
+    cursor:pointer;
+}

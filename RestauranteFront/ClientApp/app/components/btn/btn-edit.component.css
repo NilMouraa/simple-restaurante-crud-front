@@ -1,0 +1,12 @@
+﻿.btn {
+    line-height: 0.5
+}
+
+.glyphicon.glyphicon-pencil {
+    color: #0275d8;
+}
+
+.glyphicon.glyphicon-pencil:hover {
+    color: #025aa5;
+    cursor: pointer;
+}

@@ -12,9 +12,11 @@ import { AgGridModule } from "ag-grid-angular";
 import { AppComponent }         from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 
-import { GridComponent } from './components/grid/grid.component';
-import { BtnEditComponent } from "./components/grid/btn/btn-edit.component";
-import { BtnRemoveComponent } from "./components/grid/btn/btn-remove.component";
+import { GridRestauranteComponent } from './components/restaurante/grid/grid.restaurante.component';
+import { GridPratoComponent } from './components/prato/grid/grid.prato.component';
+
+import { BtnEditComponent } from "./components/btn/btn-edit.component";
+import { BtnRemoveComponent } from "./components/btn/btn-remove.component";
 
 import { PanelComponent }       from './components/panel/panel.component';
 
@@ -26,12 +28,14 @@ import { CadRestauranteComponent } from './components/restaurante/CadastrarEdita
 import { PratoComponent } from './components/prato/Gerenciar/prato.component';
 import { CadPratoComponent } from './components/prato/CadastrarEditar/cad.prato.component';
 
+import { AppService } from './components/app.service'
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        GridComponent,
+        GridRestauranteComponent,
+        GridPratoComponent,
         BtnEditComponent, 
         BtnRemoveComponent,
         PanelComponent,
@@ -46,16 +50,19 @@ import { CadPratoComponent } from './components/prato/CadastrarEditar/cad.prato.
         HttpModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent }, 
+            { path: '', redirectTo: 'Home', pathMatch: 'full' },
+            { path: 'Home', component: HomeComponent }, 
             { path: 'Gerenciar/Restaurante', component: RestauranteComponent },
             { path: 'Cadastrar/Restaurante', component: CadRestauranteComponent },
+            { path: 'Editar/Restaurante/:id', component: CadRestauranteComponent },
             { path: 'Gerenciar/Prato', component: PratoComponent },
             { path: 'Cadastrar/Prato', component: CadPratoComponent },
-            { path: '**', redirectTo: 'home' }
+            { path: 'Editar/Prato/:id', component: CadPratoComponent },
+            { path: '**', redirectTo: 'Home' }
         ]),
         AgGridModule.withComponents([BtnEditComponent, BtnRemoveComponent])
-    ]
+    ],
+    providers: [AppService],
 })
 export class AppModuleShared {
 }

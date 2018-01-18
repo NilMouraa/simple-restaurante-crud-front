@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from '../../app.service';
 
 @Component({
     selector: 'restaurante',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 export class RestauranteComponent {
     private title: string;
 
-    constructor() {
+    constructor(private service: AppService ) {
         this.title = "Restaurantes";
     }
 }
