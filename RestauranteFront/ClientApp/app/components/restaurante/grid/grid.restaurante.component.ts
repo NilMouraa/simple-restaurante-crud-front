@@ -35,16 +35,8 @@ export class GridRestauranteComponent {
         this.columnDefs = [
             { width: 80, cellRenderer: 'BtnRemoveComponent'},
             { width: 80, cellRenderer: 'BtnEditComponent'},
-            { width: 920, headerName: 'Restaurante', field: 'restaurante', },
+            { width: 920, headerName: 'Restaurante', field: 'Nome', },
         ]
-
-        this.autoGroupColumnDef = {
-            headerName: "Restaurante",
-            field: "restaurante",
-            width: 300,
-            cellRenderer: "agGroupCellRenderer",
-            cellRendererParams: { checkbox: true }
-        };
 
         this.rowSelection = "multiple";
 

@@ -12,10 +12,4 @@ export class RestauranteComponent {
     constructor(private http: Http, @Inject('BASE_URL') private baseUrl: string, private service: AppService ) {
         this.title = "Restaurantes";
     }
-
-    public PesquisarRestaurante() {
-        this.http.get(this.baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-            this.service.restaurantes = result.json() as Restaurante[];
-        }, error => console.error(error));
-    }
 }

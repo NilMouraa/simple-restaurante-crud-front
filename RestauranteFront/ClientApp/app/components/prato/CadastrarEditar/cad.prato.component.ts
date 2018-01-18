@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppService } from '../../app.service'
+import { AppService, Prato, Restaurante } from '../../app.service'
 
 @Component({
     selector: 'cad-prato',
@@ -25,27 +25,38 @@ export class CadPratoComponent {
             this.title = "Editar Restaurante";
             this.service.operacao = "E";
             let prato = this.service.pratos[Number(chave.id) - 1];
-            this.idRestaurante = prato.id;
-            this.nomePrato = prato.prato;
-            this.precoPrato = prato.preco;
+            this.idRestaurante = prato.Restaurante.RestauranteId;
+            this.nomePrato = prato.Nome;
+            this.precoPrato = prato.Preco;
         }
         else {
             this.title = "Cadastrar Restaurante";
             this.service.operacao = "I";
         }
 
-        this.restaurantes = [
-            { id: 1, nome: "Restaurante1" },
-            { id: 2, nome: "Restaurante2" },
-            { id: 3, nome: "Restaurante3" },
-            { id: 4, nome: "Restaurante4" },
-            { id: 5, nome: "Restaurante5" },
-            { id: 6, nome: "Restaurante6" }
-           ]
+        this.restaurantes = this.service.restaurantes;
     }
 
     public Salvar() {
-        alert("Salvo com sucesso!");
-        this.router.navigate(['/Gerenciar/Prato']);
+        let url: string = this.router.url;
+
+        if (url.indexOf("Editar") !== -1) { 
+            // Editar
+            let chave: any;
+            this.routerActive.params.subscribe(params => chave = params);
+
+            let Restaurante: Restaurante = this.service.restaurantes[this.idRestaurante];
+            let prato: Prato = new Prato(chave, Restaurante, this.nomePrato, this.precoPrato);
+
+            this.service.EditarPrato(prato);
+        }
+        else {
+            // Incluir
+            let restaurante: Restaurante = this.service.restaurantes[this.idRestaurante];
+            let prato: Prato = new Prato(0, restaurante, this.nomePrato, this.precoPrato)
+
+            this.service.IncluirPrato(prato);
+        }
+        
     }
 }

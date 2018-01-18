@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Http } from "@angular/http";
 import { BtnEditComponent } from "../../btn/btn-edit.component";
 import { BtnRemoveComponent } from "../../btn/btn-remove.component";
-import { RouterModule } from '@angular/router'; 
-import { AppService } from '../../app.service';
+import { RouterModule } from '@angular/router';
+import { AppService, Restaurante, Prato } from '../../app.service';
 
 @Component({
     selector: 'grid-prato',
@@ -34,18 +34,10 @@ export class GridPratoComponent {
         this.columnDefs = [
             { width: 80, cellRenderer: 'BtnRemoveComponent'},
             { width: 80, cellRenderer: 'BtnEditComponent'},
-            { width: 500, headerName: 'Restaurante', field: 'restaurante' },
-            { width: 300, headerName: 'Prato', field: 'prato' },
-            { width: 120, headerName: 'Preco', field: 'preco' }
+            { width: 500, headerName: 'Restaurante', field: 'Restaurante.Nome' },
+            { width: 300, headerName: 'Prato', field: 'Nome' },
+            { width: 120, headerName: 'Preco', field: 'Preco' }
         ]
-
-        this.autoGroupColumnDef = {
-            headerName: "Restaurante",
-            field: "restaurante",
-            width: 300,
-            cellRenderer: "agGroupCellRenderer",
-            cellRendererParams: { checkbox: true }
-        };
 
         this.rowSelection = "multiple";
 
@@ -59,6 +51,7 @@ export class GridPratoComponent {
         let arraydata = this.service.pratos;
 
         this.gridApi.setRowData(arraydata);
+        
     }
 
     onSelectionChanged(params: any) {

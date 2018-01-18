@@ -20,10 +20,10 @@ export class BtnEditComponent implements ICellRendererAngularComp {
         let url: string = this.router.url;
         
         if (url.indexOf("Restaurante") !== -1) {
-            this.router.navigate(['/Editar/Restaurante', this.params.node.data.id]);
+            this.router.navigate(['/Editar/Restaurante', this.params.node.data.RestauranteId]);
         }
         else {
-            this.router.navigate(['/Editar/Prato', this.params.node.data.id]);
+            this.router.navigate(['/Editar/Prato', this.params.node.data.PratoId]);
         }
 
     }

@@ -2,7 +2,7 @@
     <div class="form-group" style="margin-bottom:20px">
         <label for="inputFilterRestaurante">Restaurante</label>
         <select type="text" class="form-control" [(ngModel)]="idRestaurante" id="inputFilterRestaurante" aria-describedby="Restaurante" placeholder="">
-            <option *ngFor="let rest of restaurantes" [ngValue]="rest.id">{{rest.nome}}</option>
+            <option *ngFor="let rest of restaurantes" [ngValue]="rest.RestauranteId">{{rest.Nome}}</option>
         </select>
     </div>
     <div class="form-group" style="margin-bottom:20px">
