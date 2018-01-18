@@ -1,13 +1,6 @@
 <panel [title]="title">
-    <panel [title]="'Filtros'">
-        <form>
-            <div class="form-group">
-                <label for="inputFilterPrato">Nome</label>
-                <input type="text" class="form-control" id="inputFilterPrato" aria-describedby="Nome do prato" placeholder="">
-            </div>
-            <button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span> Pesquisar</button>
-            <button type="button" class="btn btn-success" [routerLink]="['/Cadastrar/Prato']"> <span class="glyphicon glyphicon-plus"></span> Cadastrar novo prato</button>
-        </form>
-    </panel>
+    <form>
+        <button type="button" class="btn btn-success" style="margin-bottom:4%" [routerLink]="['/Cadastrar/Prato']"> <span class="glyphicon glyphicon-plus"></span> Cadastrar novo prato</button>
+    </form>
     <grid-prato></grid-prato>
 </panel>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { AppService } from '../../app.service';
+import { Component, Inject } from '@angular/core';
+import { AppService, Restaurante } from '../../app.service';
+import { Http } from '@angular/http';
 
 @Component({
     selector: 'restaurante',
@@ -8,7 +9,13 @@ import { AppService } from '../../app.service';
 export class RestauranteComponent {
     private title: string;
 
-    constructor(private service: AppService ) {
+    constructor(private http: Http, @Inject('BASE_URL') private baseUrl: string, private service: AppService ) {
         this.title = "Restaurantes";
+    }
+
+    public PesquisarRestaurante() {
+        this.http.get(this.baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
+            this.service.restaurantes = result.json() as Restaurante[];
+        }, error => console.error(error));
     }
 }
