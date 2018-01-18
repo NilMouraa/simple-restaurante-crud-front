@@ -22,9 +22,10 @@ export class BtnRemoveComponent implements ICellRendererAngularComp {
 
         if (url.indexOf("Restaurante") !== -1) {
             this.service.RemoverRestaurante(this.params.node.data.RestauranteId);
+            this.refresh();
         }
         else {
-            this.service.RemoverPrato(this.params.node.data.RestauranteId);
+            this.service.RemoverPrato(this.params.node.data.PratoId);
         }
     }
 

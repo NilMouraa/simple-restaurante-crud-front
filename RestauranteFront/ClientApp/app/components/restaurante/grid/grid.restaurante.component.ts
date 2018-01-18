@@ -45,18 +45,24 @@ export class GridRestauranteComponent {
 
     onGridReady(params: any) {
         this.gridApi = params.api;
+        this.service.apiGridRestaurante = this.gridApi;
         this.gridColumnApi = params.columnApi;
-        let arraydata = this.service.restaurantes;
+        let arraydata = [];
 
-        this.gridApi.setRowData(arraydata);
+        // Obter todos os restaurantes.
+        this.service.ObterTodosRestaurante().subscribe(result => {
+            this.service.restaurantes = result.json().restaurantes;
+            arraydata = this.service.restaurantes;
+            this.gridApi.setRowData(arraydata);
+        }, error => console.error(error));
     }
-
+    
     onSelectionChanged(params: any) {
         
         var selectedRows = this.gridApi.getSelectedRows();
         this.service.model = selectedRows;
     }
-
+    
     public Editar(row:any) {
         alert("Editar");
         console.log(row);

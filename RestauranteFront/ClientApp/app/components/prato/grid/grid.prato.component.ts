@@ -46,11 +46,17 @@ export class GridPratoComponent {
 
     onGridReady(params: any) {
         this.gridApi = params.api;
+        this.service.apiGridPrato = this.gridApi;
         this.gridColumnApi = params.columnApi;
 
-        let arraydata = this.service.pratos;
+        let arraydata;
 
-        this.gridApi.setRowData(arraydata);
+        // Obter todos os pratos.
+        this.service.ObterTodosPrato().subscribe(result => {
+                this.service.pratos = result.json().pratos;
+                arraydata = this.service.pratos;
+                this.gridApi.setRowData(arraydata);
+        }, error => console.error(error));
         
     }
 
@@ -58,7 +64,7 @@ export class GridPratoComponent {
         var selectedRows = this.gridApi.getSelectedRows();
         this.service.model = selectedRows;
     }
-
+    
     public Editar(row:any) {
         console.log(row);
     }
