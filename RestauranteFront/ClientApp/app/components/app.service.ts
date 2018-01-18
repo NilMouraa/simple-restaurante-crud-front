@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import swal from 'sweetalert2'
 
 @Injectable()
 export class AppService {
@@ -32,7 +33,8 @@ export class AppService {
         debugger;
         return this.http.post("http://localhost:49793/api/restaurante", "'"+body+"'", options)
             .subscribe(result => {
-                alert("Salvo com sucesso!");
+                
+                swal("Restaurante","Salvo com sucesso!", "success");
 
                 this.routerNav.navigate(['/Gerenciar/Restaurante']);
 
@@ -48,7 +50,7 @@ export class AppService {
         debugger;
         return this.http.post("http://localhost:49793/api/prato", "'" + body + "'", options)
             .subscribe(result => {
-                alert("Salvo com sucesso!");
+                swal("Prato", "Salvo com sucesso!", "success");
                 
                 this.routerNav.navigate(['/Gerenciar/Prato']);
 
@@ -65,7 +67,7 @@ export class AppService {
 
         return this.http.put("http://localhost:49793/api/restaurante/" + restaurante.RestauranteId, "'" + body + "'", options)
             .subscribe(result => {
-                alert("Editado com sucesso!");
+                swal("Restaurante", "Editado com sucesso!", "success");
 
                 this.routerNav.navigate(['/Gerenciar/Restaurante']);
 
@@ -81,7 +83,7 @@ export class AppService {
         let options = new RequestOptions({ headers: headers });
         return this.http.put("http://localhost:49793/api/prato/" + prato.PratoId, "'" + body + "'", options)
             .subscribe(result => {
-                alert("Editado com sucesso!");
+                swal("Prato", "Editado com sucesso!", "success");
 
                 this.routerNav.navigate(['/Gerenciar/Prato']);
 
@@ -90,7 +92,7 @@ export class AppService {
 
     public RemoverRestaurante(id: number) {
         this.http.delete("http://localhost:49793/api/restaurante/" + id).subscribe(result => {
-            alert("Removido com sucesso!");
+            
             this.ReloadGridRestaurante();
             this.routerNav.navigate(['/Gerenciar/Restaurante']);
         }, error => console.error(error));       
@@ -98,7 +100,7 @@ export class AppService {
 
     public RemoverPrato(id: number) {
         this.http.delete("http://localhost:49793/api/prato/" + id).subscribe(result => {
-            alert("Removido com sucesso!");
+            
             this.ReloadGridPrato();
             this.routerNav.navigate(['/Gerenciar/Prato']);
         }, error => console.error(error));

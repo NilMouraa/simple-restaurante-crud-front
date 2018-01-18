@@ -59,7 +59,8 @@
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0",
-    "zone.js": "0.8.12"
+    "zone.js": "0.8.12",
+    "sweetalert2": "7.4.1"
   },
   "dependencies": {
     "ag-grid-enterprise": "^15.0.0",
